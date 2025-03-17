@@ -62,6 +62,9 @@ dependencies {
     // Dagger & Hilt
     implementation("com.google.dagger:dagger:2.50")
     implementation("com.google.dagger:hilt-android:2.50")
+    implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.material3.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
