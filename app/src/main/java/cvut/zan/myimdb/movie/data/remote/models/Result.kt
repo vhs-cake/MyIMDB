@@ -1,4 +1,4 @@
-package cvut.zan.myimdb.movie.remote.models
+package cvut.zan.myimdb.movie.data.remote.models
 
 
 import kotlinx.serialization.SerialName
