@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("plugin.serialization") version "2.1.10"
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 android {
@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
     // Retrofit Core
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
 
@@ -62,9 +63,12 @@ dependencies {
     // Dagger & Hilt
     implementation("com.google.dagger:dagger:2.50")
     implementation("com.google.dagger:hilt-android:2.50")
+
+    implementation("androidx.activity:activity-compose:1.9.0")
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.ui.tooling.preview.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
