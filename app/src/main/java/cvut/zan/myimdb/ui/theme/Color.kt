@@ -1,4 +1,4 @@
-package cvut.zan.myimdb.ui
+package cvut.zan.myimdb.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
