@@ -81,6 +81,9 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.volley)
+    implementation(libs.androidx.espresso.core)
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
