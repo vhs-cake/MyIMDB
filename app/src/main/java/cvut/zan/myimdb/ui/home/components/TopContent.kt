@@ -52,6 +52,11 @@ fun TopContent(modifier: Modifier = Modifier, movie: Movie, onMovieClick:(id:Int
             },
             placeholder = painterResource(id = R.drawable.bg_image_movie)
         )
+        MovieDetail(
+            rating = movie.voteAverage,
+            title = movie.title,
+            genre = movie.genreIds,
+            modifier = Modifier.align(Alignment.BottomStart).padding(bottom = 20.dp))
     }
 }
 
