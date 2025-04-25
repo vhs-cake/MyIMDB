@@ -46,7 +46,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 }
 
@@ -84,6 +84,8 @@ dependencies {
     implementation(libs.volley)
     implementation(libs.androidx.espresso.core)
     implementation("io.coil-kt:coil-compose:2.5.0")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

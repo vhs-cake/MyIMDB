@@ -7,12 +7,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,12 +23,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import cvut.zan.myimdb.R
 import cvut.zan.myimdb.movie.domain.models.Movie
 import cvut.zan.myimdb.ui.home.defaultPadding
+import cvut.zan.myimdb.ui.home.itemSpacing
 import cvut.zan.myimdb.utils.EP
 
 @Composable
@@ -50,7 +56,11 @@ fun TopContent(modifier: Modifier = Modifier, movie: Movie, onMovieClick:(id:Int
 }
 
 @Composable
-fun MovieDetail(modifier: Modifier = Modifier, rating: Double, title: String, genre: List<String>) {
+fun MovieDetail(
+    modifier: Modifier = Modifier,
+    rating: Double,
+    title: String,
+    genre: List<String>) {
     Column(modifier = modifier.padding(defaultPadding)) {
         MovieCard {
             Row(
@@ -67,6 +77,44 @@ fun MovieDetail(modifier: Modifier = Modifier, rating: Double, title: String, ge
                 Text(text = rating.toString())
             }
         }
+        Spacer(modifier = Modifier.height(itemSpacing))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            color = Color.White
+        )
+        Spacer(modifier = Modifier.height(itemSpacing))
+        MovieCard {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                genre.forEachIndexed { index, genreText ->
+                    if (index != 0) {
+                        VerticalDivider(modifier = Modifier.height(16.dp))
+                    }
+                    Text(
+                        text = genreText,
+                        modifier = Modifier.padding(6.dp).weight(1f),
+                        maxLines = 1
+                    )
+                    if (index != genre.lastIndex) {
+                        VerticalDivider(modifier = Modifier.height(16.dp))
+                    }
+                }
+            }
+        }
     }
+}
 
+@Preview(showBackground = true)
+@Composable
+private fun PrevMovieDetail() {
+    MovieDetail(
+        rating = 7.5,
+        title = "Doctor Strange",
+        genre = listOf("Action", "Adventure", "Fantasy")
+    )
 }
