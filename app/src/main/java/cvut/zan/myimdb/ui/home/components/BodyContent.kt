@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,56 +30,58 @@ fun BodyContent(
 ) {
     LazyColumn(modifier = modifier) {
         item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(itemSpacing),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Discover Movies",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-                IconButton(onClick = {/*TODO*/}) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "More discover movies"
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(itemSpacing),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Discover Movies",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                     )
+                    IconButton(onClick = {/*TODO*/}) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "More discover movies"
+                        )
+                    }
                 }
-            }
-            LazyRow {
-                items(discoverMovies) {
-                    MovieCoverImage(
-                        movie = it,
-                        onMovieClick = onMovieClick
-                    )
+                LazyRow {
+                    items(discoverMovies) {
+                        MovieCoverImage(
+                            movie = it,
+                            onMovieClick = onMovieClick
+                        )
+                    }
                 }
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = itemSpacing),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = "Trending now",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Trending now"
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = itemSpacing),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Text(
+                        text = "Trending now",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                     )
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "Trending now"
+                        )
+                    }
                 }
-            }
-            LazyRow {
-                items(trendingMovies) {
-                    MovieCoverImage(
-                        movie = it,
-                        onMovieClick = onMovieClick
-                    )
+                LazyRow {
+                    items(trendingMovies) {
+                        MovieCoverImage(
+                            movie = it,
+                            onMovieClick = onMovieClick
+                        )
+                    }
                 }
             }
         }
