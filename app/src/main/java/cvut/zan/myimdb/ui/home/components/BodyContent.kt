@@ -54,6 +54,33 @@ fun BodyContent(
                     )
                 }
             }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = itemSpacing),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text(
+                    text = "Trending now",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                )
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                        contentDescription = "Trending now"
+                    )
+                }
+            }
+            LazyRow {
+                items(trendingMovies) {
+                    MovieCoverImage(
+                        movie = it,
+                        onMovieClick = onMovieClick
+                    )
+                }
+            }
         }
     }
 }
