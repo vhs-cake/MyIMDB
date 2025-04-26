@@ -219,7 +219,6 @@ fun MoreLikeThis(
             }
         }
     }
-
 }
 
 @Composable
@@ -278,7 +277,14 @@ private fun Review(
     val movieReviews = if (viewMore) reviews else defaultReview
     val btnText = if (viewMore) "Collapse" else "More..."
     Column(modifier) {
-
+        movieReviews.forEach { review ->
+            ReviewItem(review = review)
+            Spacer(modifier = Modifier.height(itemSpacing))
+            HorizontalDivider(modifier = Modifier.fillMaxWidth())
+            Spacer(modifier = Modifier.height(itemSpacing))
+        }
+        TextButton(onClick = { setViewMore(!viewMore) }) {
+            Text(text = btnText)
+        }
     }
-
 }
