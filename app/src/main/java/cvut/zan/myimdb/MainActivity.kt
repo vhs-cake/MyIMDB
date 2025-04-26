@@ -4,11 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import cvut.zan.myimdb.ui.home.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import cvut.zan.myimdb.ui.nav.MovieNav
 import cvut.zan.myimdb.ui.theme.MyIMDBTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,8 +23,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyIMDBTheme {
-                HomeScreen {  }
+                App()
             }
+        }
+    }
+
+    @Composable
+    fun App() {
+        val navController = rememberNavController()
+        Scaffold (modifier = Modifier.fillMaxSize()) {
+            MovieNav(
+                navController = navController,
+                modifier = Modifier.padding(it)
+            )
         }
     }
 }
