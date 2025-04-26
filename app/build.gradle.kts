@@ -92,6 +92,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.5.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.34.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
