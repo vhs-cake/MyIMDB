@@ -30,15 +30,6 @@ object MovieModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(
-        movieApiService: MovieApiService,
-        mapper:ApiMapper<List<Movie>, MovieDto>
-    ):MovieRepository = MovieRepositoryImpl(
-        movieApiService, mapper
-    )
-
-    @Provides
-    @Singleton
     fun provideMovieMapper():ApiMapper<List<Movie>, MovieDto> = MovieApiMapperImpl()
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -48,4 +39,13 @@ object MovieModule {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder().baseUrl(EP.BASE_URL).addConverterFactory(json.asConverterFactory(contentType)).build().create(MovieApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideMovieRepository(
+        movieApiService: MovieApiService,
+        mapper:ApiMapper<List<Movie>, MovieDto>
+    ):MovieRepository = MovieRepositoryImpl(
+        movieApiService, mapper
+    )
 }

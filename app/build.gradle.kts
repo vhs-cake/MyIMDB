@@ -1,8 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
     kotlin("plugin.serialization") version "2.1.0"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
+    id("kotlin-kapt")
+    kotlin("kapt")
 }
 
 val apiKey: String = project.findProperty("API_KEY") as? String ?: ""
@@ -67,13 +70,16 @@ dependencies {
     // Kotlin Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
-    // OkHttp (✅ Fix)
+    // OkHttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Dagger & Hilt
-    implementation("com.google.dagger:dagger:2.50")
-    implementation("com.google.dagger:hilt-android:2.50")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     implementation("androidx.activity:activity-compose:1.9.0")
     implementation(libs.androidx.ui.graphics.android)
