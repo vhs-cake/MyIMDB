@@ -1,8 +1,8 @@
 package cvut.zan.myimdb.movieDetail.data.mapperImpl
 
 import cvut.zan.myimdb.common.data.ApiMapper
-import cvut.zan.myimdb.movieDetail.data.models.CastDto
-import cvut.zan.myimdb.movieDetail.data.models.MovieDetailDto
+import cvut.zan.myimdb.movieDetail.data.remote.models.CastDto
+import cvut.zan.myimdb.movieDetail.data.remote.models.MovieDetailDto
 import cvut.zan.myimdb.movieDetail.domain.models.Cast
 import cvut.zan.myimdb.movieDetail.domain.models.MovieDetail
 import cvut.zan.myimdb.movieDetail.domain.models.Review
