@@ -6,6 +6,10 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cvut.zan.myimdb.ui.LoadingView
+import cvut.zan.myimdb.ui.detail.components.DetailBodyContent
 import cvut.zan.myimdb.ui.detail.components.DetailTopContent
 
 @Composable
@@ -22,8 +28,8 @@ fun MovieDetailScreen(
     movieDetailViewMode: DetailViewModel = hiltViewModel(),
     onNavigateUp: () -> Unit,
     onMovieClick: (Int) -> Unit,
-    onActorClick: (Int)
-){
+    onActorClick: (Int) -> Unit
+) {
     val state by movieDetailViewMode.detailState.collectAsStateWithLifecycle()
     Box(modifier = modifier.fillMaxWidth()) {
         AnimatedVisibility(
@@ -41,16 +47,30 @@ fun MovieDetailScreen(
                 val boxHeight = maxHeight
                 val topItemHeight = boxHeight * .4f
                 val bodyItemHeight = boxHeight * .6f
-                
-                state.movieDetail?.let {movieDetail ->
+                state.movieDetail?.let { movieDetail ->
                     DetailTopContent(
                         movieDetail = movieDetail,
                         modifier = Modifier
                             .height(topItemHeight)
                             .align(Alignment.TopCenter)
                     )
+                    DetailBodyContent (
+                        movieDetail = movieDetail,
+                        movies = state.movies,
+                        isMovieLoading = state.isMovieLoading,
+                        fetchMovies = movieDetailViewMode::fetchMovies,
+                        onMovieClick = onMovieClick,
+                        onActorClick = onActorClick,
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .height(bodyItemHeight)
+                    )
                 }
             }
         }
+        IconButton (onClick = onNavigateUp, modifier = Modifier.align(Alignment.TopStart)) {
+            Icon(imageVector = Icons.AutoMirrored.Default.ArrowBack, contentDescription = "Back")
+        }
     }
+    LoadingView(isLoading = state.isLoading)
 }
