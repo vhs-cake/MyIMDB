@@ -142,7 +142,15 @@ fun DetailBodyContent(
                         }
                     }
                     LazyRow {
-
+                        items(movieDetail.cast) {
+                            ActorItem(
+                                cast = it,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .clickable { onActorClick(it.id) }
+                            )
+                            Spacer(modifier = Modifier.width(defaultPadding))
+                        }
                     }
                     Spacer(modifier = Modifier.height(itemSpacing))
 
