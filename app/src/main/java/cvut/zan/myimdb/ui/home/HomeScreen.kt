@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cvut.zan.myimdb.ui.LoadingView
 import cvut.zan.myimdb.ui.home.components.BodyContent
 import cvut.zan.myimdb.ui.home.components.TopContent
 import kotlinx.coroutines.delay
@@ -123,5 +124,6 @@ fun HomeScreen(
         }
     }
 
+    LoadingView(isLoading = state.isLoading)
 
 }
